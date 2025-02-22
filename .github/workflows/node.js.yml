@@ -26,10 +26,6 @@ jobs:
           npm install
           npm run build
 
-      - name: Install Pack CLI
-        run: |
-          curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.36.4/pack-v0.36.4-linux.tgz" | tar xz
-          sudo mv pack /usr/local/bin/
 
       - name: Build container with Buildpacks
         run: |
@@ -45,7 +41,7 @@ jobs:
 
       - name: Push image to GitHub Packages
         run: |
-          docker push ghcr.io/${{ github.repository_owner }}/nextjsbuildpack:latest ghcr.io/${{ github.repository_owner }}/nextjsbuildpack:${{ steps.build_number.outputs.number }}
+          docker push ghcr.io/${{ github.repository_owner }}/nextjsbuildpack:${{ steps.build_number.outputs.number }}
 
   deploy:
     runs-on: ubuntu-latest
