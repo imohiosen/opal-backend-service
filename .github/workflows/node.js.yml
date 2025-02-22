@@ -24,7 +24,9 @@ jobs:
       - name: Build nestjs app for production
         run: |
           npm install
+          npm install nest-cli -g
           npm run build
+          nest
 
       - name: Build container with Buildpacks
         run: |
