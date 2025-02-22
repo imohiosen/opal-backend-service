@@ -59,7 +59,10 @@ jobs:
 
       - name: Update image in Kubernetes deployment file
         run: |
-          sed -i "s|image: ghcr.io/${{ github.repository_owner }}/nextjsbuildpack:.*|image: ghcr.io/${{ github.repository_owner }}/nextjsbuildpack:${{ needs.build-and-push.outputs.build_number }}|" k8s/deployment.yaml
+          sed -i 's|ghcr.io/imohiosen/nextjsbuildpack:latest|ghcr.io/${{ github.repository_owner }}/nextjsbuildpack:${{ needs.build-and-push.steps.build_number.outputs.number }}|' k8s/deployment.yaml
+
+      - name: Print out deployment file
+        run: cat k8s/deployment.yaml
 
       - name: Deploy to Kubernetes
         run: |
