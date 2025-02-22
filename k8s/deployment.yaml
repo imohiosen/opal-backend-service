@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjsbuildpack
+  labels:
+    app: nextjsbuildpack
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nextjsbuildpack
+  template:
+    metadata:
+      labels:
+        app: nextjsbuildpack
+    spec:
+      containers:
+      - name: nextjsbuildpack
+        image: ghcr.io/imohiosen/nextjsbuildpack:latest
+        ports:
+        - containerPort: 3000
