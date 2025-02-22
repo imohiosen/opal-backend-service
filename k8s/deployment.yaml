@@ -21,7 +21,6 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
-          command: ["/usr/local/bin/node", "/usr/local/bin/npm", "run", "start:prod"]
           livenessProbe:
             httpGet:
               path: /health
