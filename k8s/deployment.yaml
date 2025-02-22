@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nextjsbuildpack
+  namespace: nextjsbuildpack
   labels:
     app: nextjsbuildpack
 spec:
@@ -21,3 +22,4 @@ spec:
         - containerPort: 3000
       imagePullSecrets:
         - name: ghcr
+        
