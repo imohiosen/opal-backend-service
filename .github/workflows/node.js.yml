@@ -17,11 +17,6 @@ jobs:
       - name: Authenticate with GitHub Packages
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Install Pack CLI
-        run: |
-          curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.36.4/pack-v0.36.4-linux.tgz" | tar xz
-          sudo mv pack /usr/local/bin/
-
       - name: Build nestjs app for production
         run: |
           npm install
@@ -29,9 +24,9 @@ jobs:
           npm run build
           nest
 
-      - name: Build container with Buildpacks
+      - name: Build container with Docker
         run: |
-          pack config default-builder 'heroku/builder:24' && pack build ghcr.io/${{ github.repository_owner }}/nextjsbuildpack:latest --buildpack heroku/nodejs-engine@3.4.8 --env BP_WEB_PROCESS_COMMAND="npm run start:prod"
+          docker build -t ghcr.io/${{ github.repository_owner }}/nextjsbuildpack:latest .
 
       - name: Tag image with build number
         run: |
