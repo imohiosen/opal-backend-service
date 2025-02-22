@@ -23,7 +23,7 @@ jobs:
 
       - name: Build container with Buildpacks
         run: |
-          pack build ghcr.io/${{ github.repository_owner }}/nextjsbuildpack:latest --buildpack heroku/nodejs-engine@3.4.8
+          pack config default-builder 'heroku/builder:24' && pack build ghcr.io/${{ github.repository_owner }}/nextjsbuildpack:latest --buildpack heroku/nodejs-engine@3.4.8
 
       - name: Push image to GitHub Packages
         run: |
