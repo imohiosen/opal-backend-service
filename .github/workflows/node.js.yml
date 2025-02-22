@@ -48,7 +48,7 @@ jobs:
         uses: azure/setup-kubectl@v3
 
       - name: Configure Kubeconfig
-        run: echo "${{ secrets.KUBECONFIG }}" | base64 --decode > kubeconfig.yaml
+        run: echo "${{ secrets.KUBECONFIG_K3S }}" | base64 --decode > kubeconfig.yaml
 
       - name: Update image in Kubernetes deployment file
         run: |
