@@ -24,7 +24,7 @@ jobs:
       - name: Build nestjs app for production
         run: |
           npm install
-          npx nest build
+          npm run build
 
       - name: Install Pack CLI
         run: |
