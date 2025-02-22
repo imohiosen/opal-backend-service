@@ -43,6 +43,7 @@ jobs:
         
       - name: Deploy to Kubernetes
         run: |
+          ls -al
           kubectl --kubeconfig=kubeconfig.yaml apply -f k8s/deployment.yaml
           kubectl --kubeconfig=kubeconfig.yaml rollout status deployment/nextjsbuildpack
 
