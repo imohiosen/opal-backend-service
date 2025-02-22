@@ -19,3 +19,5 @@ spec:
         image: ghcr.io/imohiosen/nextjsbuildpack:latest
         ports:
         - containerPort: 3000
+      imagePullSecrets:
+        - name: ghcr
