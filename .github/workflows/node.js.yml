@@ -1,4 +1,4 @@
-name: CI/CD with Buildpacks and Kubernetes
+name: Opal (opal-backend-service) CI/CD
 
 on:
   push:
