@@ -43,7 +43,7 @@ jobs:
         
       - name: Deploy to Kubernetes
         run: |
-          kubectl --kubeconfig=kubeconfig.yaml set image deployment/nextjsbuildpack nextjsbuildpack=ghcr.io/${{ github.repository_owner }}/nextjsbuildpack:latest
+          kubectl --kubeconfig=kubeconfig.yaml apply -f k8s/deployment.yaml
           kubectl --kubeconfig=kubeconfig.yaml rollout status deployment/nextjsbuildpack
 
 
