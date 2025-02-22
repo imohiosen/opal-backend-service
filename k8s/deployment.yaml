@@ -18,6 +18,7 @@ spec:
       containers:
         - name: nextjsbuildpack
           image: ghcr.io/imohiosen/nextjsbuildpack:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
           command: ["npm", "run", "start:prod"]
