@@ -2,21 +2,21 @@ import { Controller, Get } from '@nestjs/common';
 import {
   HealthCheckService,
   HealthCheck,
-  TypeOrmHealthIndicator,
+  // TypeOrmHealthIndicator,
 } from '@nestjs/terminus';
 
 @Controller('health')
 export class HealthController {
   constructor(
     private health: HealthCheckService,
-    private db: TypeOrmHealthIndicator,
+    // private db: TypeOrmHealthIndicator,
   ) {}
 
   @Get()
   @HealthCheck()
   check() {
     return this.health.check([
-      async () => this.db.pingCheck('database', { timeout: 300 }),
+      // async () => this.db.pingCheck('database', { timeout: 300 }),
     ]);
   }
 }
