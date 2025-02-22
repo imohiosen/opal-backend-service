@@ -16,22 +16,22 @@ spec:
         app: nextjsbuildpack
     spec:
       containers:
-      - name: nextjsbuildpack
-        image: ghcr.io/imohiosen/nextjsbuildpack:latest
-        ports:
-        - containerPort: 3000
-        command: ["npm", "run", "start:prod"]
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 3000
-          initialDelaySeconds: 10
-          periodSeconds: 30
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 3000
-          initialDelaySeconds: 10
-          periodSeconds: 30
+        - name: nextjsbuildpack
+          image: ghcr.io/imohiosen/nextjsbuildpack:latest
+          ports:
+            - containerPort: 3000
+          command: ["npm", "run", "start:prod"]
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 30
       imagePullSecrets:
         - name: ghcr-login-secret
